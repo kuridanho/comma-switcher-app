@@ -32,18 +32,6 @@ final class MenuModel {
         ) { [weak self] _ in
             MainActor.assumeIsolated { self?.refresh() }
         }
-        // システム設定で変えられたときもメニューバーの表示を合わせるため、定期的に読み直す。
-        // 設定ファイルは cfprefsd が書くので変更通知を受け取れず、読み取りは軽いので 2 秒おきにする。
-        let timer = Timer(timeInterval: 2, repeats: true) { [weak self] _ in
-            MainActor.assumeIsolated { self?.refreshStyle() }
-        }
-        timer.tolerance = 0.5
-        RunLoop.main.add(timer, forMode: .common)
-    }
-
-    func refreshStyle() {
-        let current = KotoeriPreferences.current()
-        if current != style { style = current }
     }
 
     /// システム設定など外から変えられた場合に合わせて読み直す。
