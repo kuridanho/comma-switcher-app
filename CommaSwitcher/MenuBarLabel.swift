@@ -9,7 +9,7 @@ import CoreText
 enum MenuBarLabel {
     static let fontSize: CGFloat = 17
     static let height: CGFloat = 16
-    static let gap: CGFloat = 2
+    static let gap: CGFloat = 5
 
     static func image(for text: String) -> NSImage {
         let font = NSFont.systemFont(ofSize: fontSize)
