@@ -9,7 +9,7 @@ struct CommaSwitcherApp: App {
         MenuBarExtra {
             MenuContent(model: model)
         } label: {
-            Text(model.style?.label ?? "？")
+            Image(nsImage: MenuBarLabel.image(for: model.style?.label ?? "？"))
         }
         .menuBarExtraStyle(.menu)
     }
